@@ -2,7 +2,7 @@ import NavBar from "@/components/NavBar";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import { getUsers } from "../api/users";
-import { getPostByID } from "../api/posts";
+import { getPostByID } from "../api/post";
 import { Toaster, toast } from "sonner";
 
 export default function PostDetail({ posts }) {
@@ -37,12 +37,12 @@ export default function PostDetail({ posts }) {
             <img src="" alt="" />
           </div>
           <div className="col-start-2 col-end-7 rounded-md border flex flex-col  bg-white w-[100%] h-[750px] ">
-            <img src={post.image} alt="" className="rounded" />
-            <div className="pl-10 pt-4">
+            <img src={post?.image} alt= "" className="" />
+           <div className="pl-10 pt-4">
               {users.map((user, idx) => {
                 return (
                   <div key={`user-${idx}`} className="mb-3">
-                    {user._id === post.user && (
+                    {user._id === post?.user && (
                       <div className="flex flex-row">
                         <img
                           src={user.profilePic}
@@ -60,9 +60,9 @@ export default function PostDetail({ posts }) {
                   </div>
                 );
               })}
-              <h1 className="font-bold text-4xl">{post.title}</h1>
+              <h1 className="font-bold text-4xl">{post?.title}</h1>
               <div className="flex flex-row mt-3.5 mb-10">
-                {post.tags?.map((tag) => {
+                {post?.tags?.map((tag) => {
                   return (
                     <div className="mr-5" key={`tag-${tag}`}>
                       <p>#{tag}</p>
@@ -70,14 +70,14 @@ export default function PostDetail({ posts }) {
                   );
                 })}
               </div>
-              <p>{post.body}</p>
+              <p>{post?.body}</p>
             </div>
           </div>
           <div className=" col-start-7 col-end-9 rounded-md border flex flex-col ml-5 bg-white w-[100%] h-[400px] pl-5 pr-5 pt-3">
             {users.map((user, idx) => {
               return (
                 <div key={`user-${idx}`} className="mb-3">
-                  {user._id === post.user && (
+                  {user._id === post?.user && (
                     <div className="flex flex-row">
                       <img
                         src={user.profilePic}
